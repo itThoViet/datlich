@@ -12,11 +12,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/quanly', [App\Http\Controllers\QuanLyPageController::class, 'index']);
 
-Auth::routes();
+Route::get('{worker}','App\Http\Controllers\WorkerInfomationController@showWorker')->where('worker', '^[a-zA-Z0-9-_\/]+$')->name('slug');;
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

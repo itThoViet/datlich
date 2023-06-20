@@ -53,15 +53,7 @@
                             <i class="bi bi-bell-fill"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
-                            {{-- <li><span class="dropdown-item">Tất cả Thông báo</span></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Xem Toàn Bộ</a></li> --}}
+                            
                             <div id="newWork" >
                                 <ul class="box-noti">
                                     <li class="header-noti">Thông báo từ ứng dụng</li>
@@ -86,8 +78,7 @@
                         </ul>
                     </li>
                 </ul>
-                {{-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button> --}}
+               
             </div>
         </div>
     </div>

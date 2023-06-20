@@ -15,8 +15,8 @@
 
     </head>
     <body class="container-fluid bg-white">
+        
         @yield('content')
-
 
         @yield('scripts')
     </body>
