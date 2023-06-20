@@ -1,0 +1,59 @@
+.navbar-brand img
+{
+    width: 50px;
+    margin: 0.5rem;
+}
+.box-noti {
+   
+    min-width: 30rem;
+    list-style: none;
+    border-radius: 5px;
+    margin-top: 5px !important;
+    margin-bottom: 0 !important;
+}
+
+.dropdown-menu {
+    background-color: #f0f8ff !important;
+}
+
+.header-noti {
+    text-align: center;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    font-size: 16px;
+    background-color: #f0f8ff !important;
+}
+
+.footer-noti {
+    text-align: center;
+    font-weight: 600;
+    padding-top: 0.5rem;
+    font-size: 16px;
+    background-color: #f0f8ff !important;
+}
+
+.main-noti {
+    text-align: center !important;
+    display: block !important;
+    font-weight: 400;
+    min-height: 30px;
+    background-color: #fff;
+    list-style-type: none;
+}
+
+.main-noti>ul {
+    list-style-type: none;
+    margin: 5px 5px 5px 5px;
+    padding: 5px;
+}
+
+.main-noti>ul>li {
+    border-bottom: 0.01rem solid cornflowerblue;
+}
+
+.footer-noti>a {
+    color: black;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+}
