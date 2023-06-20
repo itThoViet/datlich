@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.guest')
 
-        <title>Công ty TNHH DVKT Thợ Việt</title>
+@section('title')
+    <title>Công ty TNHH DVKT Thợ Việt</title>
+@endsection
+@section('content')
+    <img src="{{ asset('assets/images/logo.png') }}" alt="">    
+@endsection   
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-        <!-- Styles -->
-    @vite(['resources/js/app.js'])
-
-    </head>
-    <body class="container-fluid bg-white">
         
-    </body>
-</html>
+ 
