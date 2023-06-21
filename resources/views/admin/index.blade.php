@@ -22,8 +22,11 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
+                            <form action="" method="post">
+                                @csrf
                             <div class="modal-body bg-white">
                                 <div class="row">
+                                  
                                     <div class="col-md-8 col-lg-8 col-sm-12">
                                         <div class="row">
                                             <div class="col-2">Avata</div>
@@ -31,17 +34,21 @@
                                             <label for="image_uploads"><i class="fa fa-file-image-o" aria-hidden="true"></i></label>
                                             <input type="file" class='image_uploads' id="image_uploads" name="image_worker" class="input_imag"
                                                 accept=".jpg, .jpeg, .png" />
-                                                
-                                                {{-- <input type="file" name="image_worker" id="image_worker"
-                                                    class="form-control"> --}}
                                             </div>
                                         </div>
                                         <label for="" class="m-1">Tên Thợ: </label>
                                         <input type="text" name="name_worker" id="name_worker" class="form-control m-1">
                                         <div class="row">
                                             <div class="col-6"><label for="" class="m-1">Mã Thợ: </label>
-                                                <input type="text" name="code_worker" id="code_worker"
-                                                    class="form-control m-1">
+                                               <select name="code_worker" id="code_worker" class="form-control">
+                                                    <option value="1"> Điện Nước </option>
+                                                    <option value="2"> Điện Lanh </option>
+                                                    <option value="3"> Đồ Gỗ</option>
+                                                    <option value="4"> Năng Lượng </option>
+                                                    <option value="5"> Xây Dựng </option>
+                                                    <option value="6"> Tài Xế </option>
+                                                    <option value="7"> Văn Phòng </option>
+                                               </select>
                                             </div>
                                             <div class="col-6"><label for="" class="m-1">Kinh Nghiệm: </label>
                                                 <input type="text" name="year_worker" id="year_worker"
@@ -65,8 +72,9 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -134,7 +142,7 @@
                     const listItem = document.createElement('li');
                     const para = document.createElement('p');
                     if (validFileType(file)) {
-                        para.textContent = `Hình ảnh: ${file.name}, kích thước ${returnFileSize(file.size)}.`;
+                        para.textContent = `Kích thước ${returnFileSize(file.size)}.`;
                         const image = document.createElement('img');
                         image.src = URL.createObjectURL(file);
 
@@ -151,7 +159,6 @@
             }
             
         }
-
 
         const fileTypes = [
             "image/apng",
@@ -180,7 +187,7 @@
             }
         function onchangeInfo()
         {
-            
+
         }
     </script>
 @endsection
