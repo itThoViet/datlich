@@ -72,15 +72,17 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="dienNuoc" role="tabpanel" aria-labelledby="home-tab">
                             <div class="row mt-3 ">
-                                <a style="text-decoration: none;" href="{{ url('a01') }}" id="cardWorkerDN">
-                                
-                                </a>
+                                <div class="col-2">
+                                    <a style="text-decoration: none;" href="{{ url('a01') }}" id="cardWorkerDN"></a>
+                                </div>
                             </div>
                         </div>
                         <div class="tab-pane" id="dienLanh" role="tabpanel" aria-labelledby="profile-tab">
-                            <div class="row mt-3 " >
+                            <div class="row mt-3 ">
+                            <div class="col-2">
                                 <a style="text-decoration: none;" href="{{ url('b01') }}" id="cardWorkerDL"></a>
                             </div>
+                        </div>
                         </div>
                         <div class="tab-pane" id="doGo" role="tabpanel" aria-labelledby="messages-tab">
                             <div class="row mt-3">
@@ -423,3 +425,4 @@
 integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="{{ url('assets/javascripts/showCard.js') }}"></script>
 @endsection
+

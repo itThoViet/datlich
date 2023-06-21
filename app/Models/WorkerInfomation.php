@@ -15,6 +15,7 @@ class WorkerInfomation extends Model
         'code_worker',
         'year_worker',
         'description_worker',
+        'kind_worker',
         'flag',
     ];
 }

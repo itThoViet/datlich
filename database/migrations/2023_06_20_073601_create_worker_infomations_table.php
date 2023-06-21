@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('img_worker');
             $table->string('code_worker');
             $table->string('year_worker');
+            $table->tinyInteger('kind_worker')->default(0);
             $table->string('description_worker');
             $table->boolean('flag');
             $table->timestamps();
