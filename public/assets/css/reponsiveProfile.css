@@ -1,0 +1,75 @@
+@media only screen and (max-width: 1230px) {
+  .h2Profile {
+    font-size: 30px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .overlay {
+    width: 70%;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.315);
+    padding: 10px;
+  }
+  .h2Profile {
+    font-size: 20px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .labelFieldNew {
+    left: 45px;
+  }
+  .labelFieldTextareaNew {
+    left: 45px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .contactWork {
+    display: block;
+    margin-top: 15px;
+  }
+
+  .workCont {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 20px;
+  }
+
+  .namePro {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 20px;
+  }
+
+  .noteOrder {
+    margin-right: 0;
+    margin-top: 20px;
+  }
+
+  #orderForm {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .imgUploadNew {
+    grid-template-columns: auto;
+  }
+  .imgUpLeftNew {
+    margin-bottom: 5px;
+  }
+  .popupNew {
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 540px) {
+  .overlay {
+    width: 90%;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.315);
+    padding: 10px;
+  }
+  .h2Profile {
+    font-size: 15px;
+  }
+}
