@@ -41,6 +41,7 @@
         $('h6.alert').not('.alert-important').delay(3000).slideUp(300);
     </script>
     <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/tinymce/tinymce.min.js') }}"></script>
     @yield('scripts')
 </body>
 

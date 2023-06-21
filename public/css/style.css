@@ -57,3 +57,11 @@
     font-weight: 600;
     font-size: 16px;
 }
+.tox-menubar, .tox-promotion-link 
+{
+    display: none !important;
+}
+.preview_im_coment img
+{
+    max-width: 350px;
+}

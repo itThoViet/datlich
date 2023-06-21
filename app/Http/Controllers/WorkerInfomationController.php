@@ -37,5 +37,9 @@ class WorkerInfomationController extends Controller
             abort('404');
         }
     }
+    public function create(Request $request) {
+        
+        dd($request);
+    }
 
 }
