@@ -106,7 +106,7 @@ class WorkerInfomationController extends Controller
             else{
                 return view('admin.index')-> with('error', 'Thêm mới trang thợ thành công!');
             }
-    
+    // sdsd
         }
         else 
             return  view('admin.index')-> with('error', 'Vui lòng chọn hình ảnh');
