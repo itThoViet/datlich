@@ -53,7 +53,7 @@
                 <div class="card-body">
                     <div class="avatarProfile">
                         {{-- <img src="http://192.168.1.21/{{$worker->img_worker}}" alt=""> --}}
-                        <img src="http://192.168.1.21/{{$worker->img_worker}}" alt="">
+                        <img src="{{ asset($worker->img_worker) }} " alt="">
                     </div>
                     <div class="infoStaff ">
                     <input type="hidden" value="{{$worker->slug}}" />
@@ -102,7 +102,7 @@
                     <div class="containerContact" >
                         <div class="gridContactLeft">
                             <h3>Tư Vấn - Báo Giá - Đặt Lịch Ngay</h3>
-                            <form action="" id="orderForm" method="post">
+                            <form action="" id="orderForm">
                                 <div class="contactWork">
                                     <div class="workCont">
                                         <label class="yccv">Yêu cầu công việc<span class="required "
