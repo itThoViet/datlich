@@ -16,7 +16,7 @@ class WorkerInfomationController extends Controller
     }
     public function getAllWorker(){
         $dt = WorkerInfomation::all();
-        return response()->json($dt);
+        return response()->json(['data'=>$dt]);
     }
     public function showWorker($worker = null) {
         if(!$worker) {
@@ -51,6 +51,7 @@ class WorkerInfomationController extends Controller
         if($new_w < 10){$num_padded = sprintf("%02d", $new_w);}
         $code_worker='';
         $path ='';
+        // dd($new_w);
         switch($request->code_worker)
         {
 
@@ -79,35 +80,34 @@ class WorkerInfomationController extends Controller
         }
         if($request->hasFile('image_worker'))
         {
-            $files = $request->file('imag_comment');
+            $files = $request->file('image_worker');
             $extension = $files->getClientOriginalExtension();
             $allowedfileExtension = ['pdf', 'jpg', 'png'];
             $check = in_array($extension, $allowedfileExtension);
-            // $sku = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1, 6);
-            // $datel = date('H_s-m-Y');
+
+
             if ($check) {
                 $name = $code_worker . "." . $files->getClientOriginalExtension();
                 $path = $files->move($this->uploadFolder, $name);
-                $new_add = new WorkerInfomation([
-                    'slug'=>$code_worker,
-                    'name_worker'=>$request->name_worker,
-                    'img_worker'=>$path,
-                    'code_worker'=>$code_worker ,
-                    'kind_worker'=>$request->code_worker,
-                    'year_worker'=>$request->year_worker,
-                    'description_worker'=>$request->description_worker,
-                    'flag'=>1,
-                ]);
-                $new_add->save();
-                if($new_add)
-                {
-                    return view('welcome')-> with('status', 'Thêm mới trang thợ thành công!');
-                }
-                else{
-                    return view('welcome')-> with('error', 'Thêm mới trang thợ thành công!');
-                }
-
             }
+        }
+        $new_add = new WorkerInfomation([
+            'slug'=>$code_worker,
+            'name_worker'=>$request->name_worker,
+            'img_worker'=>$path,
+            'code_worker'=>$code_worker ,
+            'kind_worker'=>$request->code_worker,
+            'year_worker'=>$request->year_worker,
+            'description_worker'=>$request->description_worker,
+            'flag'=>1,
+        ]);
+        $new_add->save();
+        if($new_add)
+        {
+            return view('welcome')-> with('status', 'Thêm mới trang thợ thành công!');
+        }
+        else{
+            return view('welcome')-> with('error', 'Thêm mới trang thợ thành công!');
         }
 
     }

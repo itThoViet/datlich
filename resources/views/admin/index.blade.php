@@ -7,6 +7,11 @@
                 {{ session('status') }}
             </div>
         @endif
+        @if (session('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+        @endif
         <div class="row justify-content-center">
             <div class="col-12 d-flex justify-content-end"><button type="button" class="btn btn-outline-primary"
                     data-bs-toggle="modal" data-bs-target="#modalId">
@@ -22,7 +27,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
-                            <form action="" method="post">
+                            <form action="" method="post" enctype="multipart/form-data">
                                 @csrf
                             <div class="modal-body bg-white">
                                 <div class="row">
@@ -79,17 +84,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-11">
                 <div class="table-responsive">
                     <table
-                        class="table table-striped-columns
-                table-hover	
-                table-bordered
-                table-primary
-                align-middle"
+                        class="table table-striped-columns table-hover table-bordered table-primaryalign-middle"
                         id="thoAll">
                         <thead class="table-light">
-                            <caption>Trang thông tin giới thiệu thợ</caption>
                             <tr>
                                 <th>STT</th>
                                 <th>Mã</th>
@@ -97,16 +97,14 @@
                                 <th>Ảnh</th>
                                 <th>Mô tả</th>
                                 <th>Kinh Nghiệm</th>
+                                <th>Link</th>
                                 <th>Chỉnh</th>
                             </tr>
                         </thead>
-                        <tbody class="table-group-divider">
-
+                        <tbody>
                         </tbody>
-
                     </table>
                 </div>
-
             </div>
         </div>
     </div>
@@ -189,5 +187,26 @@
         {
 
         }
+        $(document).ready( function () {
+        var table = $('#thoAll').DataTable({
+            responsive: true,
+
+            ajaxSource: "{{url('quanly/allw')}}",
+            columns: [
+                { data: 'id'},
+                { data: 'code_worker'},
+                { data: 'name_worker'},
+                { data: 'img_worker'},
+                { data: 'description_worker'},
+                { data: 'year_worker'},
+                { data: 'slug'},
+                { data:null,
+                    render : function(data,row,type)
+                    {
+                        return `<button class='btn btn-warning'> <i class='bi bi-plus'></i></class>`;
+                    } 
+                },
+        ]
+        });});
     </script>
 @endsection
