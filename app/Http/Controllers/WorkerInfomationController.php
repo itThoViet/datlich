@@ -84,8 +84,6 @@ class WorkerInfomationController extends Controller
             $extension = $files->getClientOriginalExtension();
             $allowedfileExtension = ['pdf', 'jpg', 'png'];
             $check = in_array($extension, $allowedfileExtension);
-
-
             if ($check) {
                 $name = $code_worker . "." . $files->getClientOriginalExtension();
                 $path = $files->move($this->uploadFolder, $name);
