@@ -19,6 +19,8 @@ Route::get('/', function () {
 Route::prefix('quanly')->group(function(){
     Route::get('/', [App\Http\Controllers\QuanLyPageController::class, 'index']);
     Route::post('/new', [App\Http\Controllers\WorkerInfomationController::class, 'create'])->name('create_new');
+    Route::post('/edit', [App\Http\Controllers\WorkerInfomationController::class, 'edit'])->name('edit');
+
     Route::get('/allw', [App\Http\Controllers\WorkerInfomationController::class, 'getAllWorker'])->name('getAllWorker');
 
 });

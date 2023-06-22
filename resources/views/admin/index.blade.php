@@ -2,23 +2,13 @@
 
 @section('content')
     <div class="container-fluid">
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
-        @if (session('error'))
-        <div class="alert alert-danger" role="alert">
-            {{ session('error') }}
-        </div>
-        @endif
-        <div class="row justify-content-center">
+        <div class="row justify-content-center bg-white">
             <div class="col-12 d-flex justify-content-end"><button type="button" class="btn btn-outline-primary"
-                    data-bs-toggle="modal" data-bs-target="#modalId">
+                    data-bs-toggle="modal" data-bs-target="#addNew">
                     <i class="bi bi-plus"></i>
                 </button>
 
-                <div class="modal fade" id="modalId" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+                <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
                     aria-hidden="true">
                     <div class="modal-dialog modal-sm modal-fullscreen" role="document">
                         <div class="modal-content">
@@ -38,11 +28,11 @@
                                             <div class="col-10">
                                             <label for="image_uploads"><i class="fa fa-file-image-o" aria-hidden="true"></i></label>
                                             <input type="file" class='image_uploads' id="image_uploads" name="image_worker" class="input_imag"
-                                                accept=".jpg, .jpeg, .png" />
+                                                accept=".jpg, .jpeg, .png" required/>
                                             </div>
                                         </div>
                                         <label for="" class="m-1">Tên Thợ: </label>
-                                        <input type="text" name="name_worker" id="name_worker" class="form-control m-1">
+                                        <input type="text" name="name_worker" id="name_worker" class="form-control m-1" required>
                                         <div class="row">
                                             <div class="col-6"><label for="" class="m-1">Mã Thợ: </label>
                                                <select name="code_worker" id="code_worker" class="form-control">
@@ -57,12 +47,12 @@
                                             </div>
                                             <div class="col-6"><label for="" class="m-1">Kinh Nghiệm: </label>
                                                 <input type="text" name="year_worker" id="year_worker"
-                                                    class="form-control m-1">
+                                                    class="form-control m-1" required>
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label">Mô Tả</label>
-                                            <textarea class="form-control" name="description_worker" id="description_worker" rows="3"></textarea>
+                                            <textarea class="form-control" name="description_worker" id="description_worker" rows="3" required></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-lg-4 col-sm-12">
@@ -87,7 +77,7 @@
             <div class="col-md-11">
                 <div class="table-responsive">
                     <table
-                        class="table table-striped-columns table-hover table-bordered table-primaryalign-middle"
+                        class="table table-hover table-bordered "
                         id="thoAll">
                         <thead class="table-light">
                             <tr>
@@ -196,17 +186,77 @@
                 { data: 'id'},
                 { data: 'code_worker'},
                 { data: 'name_worker'},
-                { data: 'img_worker'},
+                { data: null,
+                    render:function(data,row,type)
+                    {
+                        return `<img src='{{asset('`+data.img_worker+`') }}'width='50px'>`;
+                    }
+                },
                 { data: 'description_worker'},
                 { data: 'year_worker'},
-                { data: 'slug'},
+                { data: null,
+                    render:function(data,row,type)
+                    {
+                        return `<a href="{{asset('`+data.slug+`')}}" class ="btn btn-sm btn-outline-primary">Xem</a>`;
+                    }
+                },
                 { data:null,
                     render : function(data,row,type)
                     {
-                        return `<button class='btn btn-warning'> <i class='bi bi-plus'></i></class>`;
+                        return `<!-- Modal trigger button -->
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#edit`+data.id+`">
+                           <i class='bi bi-tools'></i>
+                        </button>
+                        
+                        <!-- Modal Body -->
+                        <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                        <div class="modal fade" id="edit`+data.id+`" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg " role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitleId">Sửa thông tin cho thợ: `+data.name_worker+`</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form action="{{ route('edit') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                            <div class="modal-body bg-white">
+                               
+                                        <div class="row">
+                                            <div class="col-2">Avata mới: </div>
+                                            <div class="col-10">
+                                            <label for="image_uploads"><i class="fa fa-file-image-o" aria-hidden="true"></i></label>
+                                            <input type="file" class='image_uploads' id="image_uploads" name="image_worker" class="input_imag"
+                                                accept=".jpg, .jpeg, .png" />
+                                            </div>
+                                            <input type='hidden' name='code_worker' value='`+data.slug+`'/>
+                                            <input type='hidden' name='id' value='`+data.id+`'/>
+                                        </div>
+                                        <label for="" class="m-1">Tên Thợ: `+data.name_worker+`</label>
+                                        <input type="text" name="name_worker" id="name_worker" class="form-control m-1" required placeholder='Tên Mới'>
+                                        <div class="mb-3">
+                                            <label for="" class="form-label">Mô Tả Mới:</label>
+                                            <textarea class="form-control" name="description_worker" id="description_worker2" rows="3">`+data.description_worker+`</textarea>
+                                        </div>
+                                   
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                      `;
                     } 
                 },
         ]
         });});
+        tinymce.init({
+            selector: 'textarea#description_worker2',
+            height: 400
+        });
     </script>
 @endsection
