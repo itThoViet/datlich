@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\WorkerInfomation;
 use Illuminate\Http\Request;
+use App\Http\Controllers\QuanLyPageController;
 
 class WorkerInfomationController extends Controller
 {
@@ -48,7 +49,9 @@ class WorkerInfomationController extends Controller
         // dd($request);
         $number_code = WorkerInfomationController::getLastestCode($request->code_worker);
         $new_w = $number_code + 1;
+        // dd($number_code);
         if($new_w < 10){$num_padded = sprintf("%02d", $new_w);}
+        else{$num_padded  = $number_code;}
         $code_worker='';
         $path ='';
         // dd($new_w);
@@ -101,11 +104,17 @@ class WorkerInfomationController extends Controller
             $new_add->save();
             if($new_add)
             {
-                return view('admin.index')-> with('status', 'Thêm mới trang thợ thành công!');
+                return redirect()->action([QuanLyPageController::class,'index'])-> with('status', 'Thêm mới trang thợ thành công!');
+                // return view('admin.index')-> with('status', 'Thêm mới trang thợ thành công!');
             }
             else{
-                return view('admin.index')-> with('error', 'Thêm mới trang thợ thành công!');
+                return redirect()->action([QuanLyPageController::class,'index'])-> with('error', 'No Avata');
             }
+
+        }
+        else
+        {
+            return redirect()->action([QuanLyPageController::class,'index'])-> with('error', 'No Avata');
         }
 
     }
