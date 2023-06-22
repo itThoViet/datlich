@@ -88,24 +88,25 @@ class WorkerInfomationController extends Controller
                 $name = $code_worker . "." . $files->getClientOriginalExtension();
                 $path = $files->move($this->uploadFolder, $name);
             }
-        }
-        $new_add = new WorkerInfomation([
-            'slug'=>$code_worker,
-            'name_worker'=>$request->name_worker,
-            'img_worker'=>$path,
-            'code_worker'=>$code_worker ,
-            'kind_worker'=>$request->code_worker,
-            'year_worker'=>$request->year_worker,
-            'description_worker'=>$request->description_worker,
-            'flag'=>1,
-        ]);
-        $new_add->save();
-        if($new_add)
-        {
-            return view('welcome')-> with('status', 'Thêm mới trang thợ thành công!');
-        }
-        else{
-            return view('welcome')-> with('error', 'Thêm mới trang thợ thành công!');
+            $new_add = new WorkerInfomation([
+                'slug'=>$code_worker,
+                'name_worker'=>$request->name_worker,
+                'img_worker'=>$path,
+                'code_worker'=>$code_worker ,
+                'kind_worker'=>$request->code_worker,
+                'year_worker'=>$request->year_worker,
+                'description_worker'=>$request->description_worker,
+                'flag'=>1,
+            ]);
+            $new_add->save();
+            if($new_add)
+            {
+                return view('admin.index')-> with('status', 'Thêm mới trang thợ thành công!');
+            }
+            else{
+                return view('admin.index')-> with('error', 'Thêm mới trang thợ thành công!');
+            }
+    // sdsd
         }
 
     }
