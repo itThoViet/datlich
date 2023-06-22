@@ -69,6 +69,11 @@
   .popupNew {
     width: 70%;
   }
+  .containerCmtNew {
+    height: 500px;
+    overflow-y: scroll;
+
+}
 }
 
 @media only screen and (max-width: 540px) {

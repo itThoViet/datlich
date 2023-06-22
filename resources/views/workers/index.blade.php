@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 
 @section('title')
-    <title>Công ty TNHH DVKT Thợ Việt</title>
+    <title>{{$worker->name_worker}} - Công ty TNHH DVKT Thợ Việt</title>
 @endsection
 @section('content')
 <section id="carouselId" class="carousel slide" data-bs-ride="carousel">
@@ -38,7 +38,7 @@
                     d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
             </svg>
         </a>
-        <a href="#fullName" type="button" class=" btnOverlayProfile">Hỏi - Đáp Ngay
+        <a href="#hoidap" type="button" class=" btnOverlayProfile">Hỏi - Đáp Ngay
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-question" viewBox="0 0 16 16">
                 <path d="M8.05 9.6c.336 0 .504-.24.554-.627.04-.534.198-.815.847-1.26.673-.475 1.049-1.09 1.049-1.986 0-1.325-.92-2.227-2.262-2.227-1.02 0-1.792.492-2.1 1.29A1.71 1.71 0 0 0 6 5.48c0 .393.203.64.545.64.272 0 .455-.147.564-.51.158-.592.525-.915 1.074-.915.61 0 1.03.446 1.03 1.084 0 .563-.208.885-.822 1.325-.619.433-.926.914-.926 1.64v.111c0 .428.208.745.585.745z"/>
                 <path d="m10.273 2.513-.921-.944.715-.698.622.637.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636a2.89 2.89 0 0 1 4.134 0l-.715.698a1.89 1.89 0 0 0-2.704 0l-.92.944-1.32-.016a1.89 1.89 0 0 0-1.911 1.912l.016 1.318-.944.921a1.89 1.89 0 0 0 0 2.704l.944.92-.016 1.32a1.89 1.89 0 0 0 1.912 1.911l1.318-.016.921.944a1.89 1.89 0 0 0 2.704 0l.92-.944 1.32.016a1.89 1.89 0 0 0 1.911-1.912l-.016-1.318.944-.921a1.89 1.89 0 0 0 0-2.704l-.944-.92.016-1.32a1.89 1.89 0 0 0-1.912-1.911l-1.318.016z"/>
@@ -53,14 +53,20 @@
                 <div class="card-body">
                     <div class="avatarProfile">
                         {{-- <img src="http://192.168.1.21/{{$worker->img_worker}}" alt=""> --}}
-                        <img src="https://thoviet.com.vn/wp-content/uploads/2023/06/mrCo.png" alt="">
+                        <img src="http://192.168.1.21/{{$worker->img_worker}}" alt="">
                     </div>
                     <div class="infoStaff ">
                     <input type="hidden" value="{{$worker->slug}}" />
-                        <h5 class="card-title" id="tenKyThuatVien">KTV:{{$worker->name_worker}}
+                        <h5 class="card-title" id="tenKyThuatVien">Nhân Viên:{{$worker->name_worker}}
                         </h5>
-                        <p class="card-text" id="maNV">Mã NV: {{$worker->code_worker}}</p>
-                        <p class="card-text" id="kinhNghiemNV">Kinh nghiệm: {{$worker->year_worker}} năm</p>
+                        <p class="card-text" style="margin-bottom: 0" id="maNV">Mã NV: {{$worker->code_worker}}</p>
+                        @if(substr($worker->code_worker,0,1) !== "V" )
+                            <p class="card-text" id="kinhNghiemNV">Kinh nghiệm: {{$worker->year_worker}} năm</p>
+                        @endif
+                        {!!$worker->description_worker!!}
+
+
+
                     </div>
                 </div>
             </div>
@@ -222,13 +228,31 @@
                                     alt="" srcset="">
                                 <img src="https://thoviet.com.vn/wp-content/uploads/2023/06/dichvutv.jpg"
                                     alt="" srcset="">
+                                    {{-- --  --}}
+                                    <img src="https://thoviet.com.vn/wp-content/uploads/2023/06/son-sua-nha.jpg"
+                                    alt="" srcset="">
+                                <img src="https://thoviet.com.vn/wp-content/uploads/2023/06/son-sua-do-go.jpg"
+                                    alt="" srcset="">
+                                <img src="https://thoviet.com.vn/wp-content/uploads/2023/06/han-thang-dat-xe.jpg"
+                                    alt="" srcset="">
+                                <img src="https://thoviet.com.vn/wp-content/uploads/2023/06/han-khung-sat.jpg"
+                                    alt="" srcset="">
+                                <img src="https://thoviet.com.vn/wp-content/uploads/2023/06/vsbo-nang-luong-mat-troi.jpg"
+                                    alt="" srcset="">
+                                    <img
+                                    src="https://thoviet.com.vn/wp-content/uploads/2023/06/thao-do-tuong-nha.jpg"
+                                    alt="" srcset="">
+                                <img src="https://thoviet.com.vn/wp-content/uploads/2023/06/sua-ml-treo-tuong.jpg"
+                                    alt="" srcset="">
+                                <img src="https://thoviet.com.vn/wp-content/uploads/2023/06/sua-mai-ton.jpg"
+                                    alt="" srcset="">
                             </div>
                         </marquee>
                     <!-- comment  -->
                     <section class="formCmtNew"
                         style="width: 100%; margin: auto; background-color: white; padding: 15px;">
                         <form id="formCmtTV" action="" method="GET" enctype="multipart/form-data">
-                            <h4 class="headCmtFormNew">Hỏi / Đáp - Tư Vấn</h4>
+                            <h4 class="headCmtFormNew" id="hoidap">Hỏi / Đáp - Tư Vấn</h4>
                             <hr style="margin-bottom:25px;">
                             <div id="infoCmtNew">
                                 <div class="gridCmtNew">
@@ -266,13 +290,13 @@
                                 </div>
                                 <div class="formBtnCmtNew">
                                     <button type="submit" id="postcmt" class="formBtn-CmtNew"
-                                        style="font-size: 13px; padding: 0px 10px;">Bình Luận</button>
+                                        style="font-size: 13px; padding: 0px 10px;">Gửi</button>
                                 </div>
                             </div>
                         </form>
 
                         <div class="blog-commentNew">
-                            <h4 class="headCmtFormNew"><span class="countClassNew"></span> Bình Luận</h4>
+                            <h4 class="headCmtFormNew"><span class="countClassNew"></span> Thảo Luận</h4>
                             <hr />
                             <!-- comment  -->
                             <div class="containerCmtNew"></div>

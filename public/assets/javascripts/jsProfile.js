@@ -173,7 +173,7 @@ fetch(url_comment, {
               <label class="labelFieldTextareaNew" for="message">Nội dung (<span style="color: red;">*</span>)</label>
             </div>
             <div class="formBtnCmtNew">
-              <button type="submit" id="postcmt" class="formBtn_Reply formBtn-CmtNew">Bình Luận</button>
+              <button type="submit" id="postcmt" class="formBtn_Reply formBtn-CmtNew">Gửi</button>
             </div>
           </div>
         </form>
