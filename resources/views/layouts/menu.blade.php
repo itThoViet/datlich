@@ -7,7 +7,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Trang Chủ</a>
                 </li>
                
@@ -40,11 +40,11 @@
                         </li>
                         <li><a class="dropdown-item" href="#">Khách định kỳ</a></li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
             <div class="d-flex nab-menu-cus">
                 <ul class="navbar-nav mb-2 mb-lg-0 d-flex justify-content-between">
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-chat-dots-fill"></i></a>
                     </li>
                     <li class="nav-item dropdown">
@@ -62,18 +62,18 @@
                                 </ul>
                             </div>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-person-circle"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Thông tin tài khoản</a></li>
+                            {{-- <li><a class="dropdown-item" href="#">Thông tin tài khoản</a></li>
                             <li><a class="dropdown-item" href="#"></a></li>
                             <li>
                                 <hr class="dropdown-divider">
-                            </li>
+                            </li> --}}
                             <li><a class="dropdown-item" href="#">Thoát</a></li>
                         </ul>
                     </li>

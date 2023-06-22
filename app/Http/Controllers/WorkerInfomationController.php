@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\WorkerInfomation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\QuanLyPageController;
+use Illuminate\Support\Facades\File;
 
 class WorkerInfomationController extends Controller
 {
     //
     private $uploadFolder;
+    // private $uploadDir;
     public function __construct()
     {
         // $this->uploadDir = public_path('');
@@ -124,5 +126,58 @@ class WorkerInfomationController extends Controller
         $co = WorkerInfomation::where('kind_worker','=',$id)->get('id');
         return $co->count();
 
+    }
+    public function edit(Request $request){
+
+        // dd($re);
+        if($request->hasFile('image_worker'))
+        {
+            $files = $request->file('image_worker');
+            $extension = $files->getClientOriginalExtension();
+            $allowedfileExtension = ['pdf', 'jpg', 'png'];
+            $check = in_array($extension, $allowedfileExtension);
+           
+
+            if ($check) {
+                $name = $request->code_worker . "." . $files->getClientOriginalExtension();
+                $check_name = $this->uploadFolder .$name;
+                // dd($check_name);
+                if(File::exists(public_path($check_name)))
+                {
+                    $name = $request->code_worker . "new." . $files->getClientOriginalExtension();
+                }
+                $path = $files->move($this->uploadFolder, $name);
+                $up = WorkerInfomation::where('id',$request->id)->update([
+                    'name_worker'=> $request->name_worker,
+                    'img_worker' =>$path,
+                    'description_worker'=>$request->description_worker,
+                ]);
+                if($up)
+                {
+                    return redirect()->action([QuanLyPageController::class,'index'])-> with('status', 'Thêm mới trang thợ thành công!');
+                    // return view('admin.index')-> with('status', 'Thêm mới trang thợ thành công!');
+                }
+                else{
+                    return redirect()->action([QuanLyPageController::class,'index'])-> with('error', 'No Avata');
+                }
+       
+            }
+        }
+        else
+        {
+            $up = WorkerInfomation::where('id',$request->id)->update([
+                'name_worker'=> $request->name_worker,
+                'description_worker'=>$request->description_worker,
+            ]);
+            if($up)
+            {
+                return redirect()->action([QuanLyPageController::class,'index'])-> with('status', 'Sửa trang thợ thành công!');
+                // return view('admin.index')-> with('status', 'Thêm mới trang thợ thành công!');
+            }
+            else{
+                return redirect()->action([QuanLyPageController::class,'index'])-> with('error', 'No Avata');
+            }
+        }
+        
     }
 }
