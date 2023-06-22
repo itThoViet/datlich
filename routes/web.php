@@ -20,7 +20,6 @@ Route::prefix('quanly')->group(function(){
     Route::get('/', [App\Http\Controllers\QuanLyPageController::class, 'index']);
     Route::post('/', [App\Http\Controllers\WorkerInfomationController::class, 'create'])->name('create_new');
 });
-
 Route::get('{worker}','App\Http\Controllers\WorkerInfomationController@showWorker')->where('worker', '^[a-zA-Z0-9-_\/]+$')->name('slug');;
 
 

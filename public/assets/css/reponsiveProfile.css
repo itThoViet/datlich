@@ -4,15 +4,18 @@
   }
 }
 @media only screen and (max-width: 1024px) {
-  .overlay {
-    width: 70%;
-    margin: auto;
-    background-color: rgba(0, 0, 0, 0.315);
-    padding: 10px;
-  }
+
   .h2Profile {
     font-size: 20px;
   }
+  .containerContact{
+    display: block;
+    margin-top: 10px;
+  }
+  /* .carousel-item img {
+    width: 100%;
+    height: 25rem;
+  } */
 }
 @media only screen and (min-width: 1024px) {
   .labelFieldNew {
@@ -21,6 +24,7 @@
   .labelFieldTextareaNew {
     left: 45px;
   }
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -50,6 +54,10 @@
     padding-left: 10px;
     padding-right: 10px;
   }
+  /* .carousel-item img {
+    width: 100%;
+    height: 25rem;
+  } */
 }
 @media only screen and (max-width: 700px) {
   .imgUploadNew {
@@ -62,14 +70,17 @@
     width: 70%;
   }
 }
+
 @media only screen and (max-width: 540px) {
-  .overlay {
-    width: 90%;
-    margin: auto;
-    background-color: rgba(0, 0, 0, 0.315);
-    padding: 10px;
-  }
+
   .h2Profile {
     font-size: 15px;
   }
 }
+@media only screen and (max-width: 414px) {
+
+    /* .carousel-item img {
+      width: 100%;
+      height: 12rem;
+    } */
+  }

@@ -12,29 +12,25 @@
       --para-color-overlay-white: white;
       --btn-color-overlay-white:white;
   } */
-  .bg-overlay {
-    background-image: url("https://thoviet.com.vn/wp-content/uploads/2023/04/tap-the-cong-ty-tnhh-dich-vu-ky-thuat-tho-viet-1.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    color: #fff;
-    height: 450px;
-    padding-top: 100px;
-    text-align: center;
-
+  .carousel-item img {
+    width: 100%;
+    height: 100%;
   }
   .overlay {
-    width: 50%;
+    width: 100%;
     margin: auto;
-    background-color: rgba(0, 0, 0, 0.315);
-    padding: 10px;
-  }
+    background-color: #3d89f8;
+    padding: 50px 10px;
+    border-top: 8px solid #fd7e14;
+}
   .h2Profile {
     font-weight: 700;
+    color: white;
   }
   .btnOverlayProfile {
     width: fit-content;
     margin: auto;
+    margin-top: 10px;
     padding: 5px 15px;
     color: rgb(241, 157, 0);
     border: 2px solid rgb(241, 157, 0);
@@ -52,7 +48,7 @@
     width: 30px;
   }
   .main-profile {
-    margin-top: -3%;
+    margin-top: 3%;
   }
   .borderTopCardProfile {
     border-top: 8px solid rgb(241, 157, 0) !important;
@@ -639,6 +635,7 @@
   }
   .notice{
       padding: 0 10px;
+      margin-bottom: 15px;
   }
   .a-indexProfile{
       text-decoration: none;

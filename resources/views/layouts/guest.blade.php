@@ -15,12 +15,14 @@
     {{-- css  --}}
     <link rel="stylesheet" href="{{ asset('assets/css/styleProfile.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/reponsiveProfile.css') }}">
+    {{-- flatpickr --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <!-- Styles -->
     @vite(['resources/js/app.js'])
 
 </head>
 
-<body class="container-fluid bg-white">
+<body>
 
     @yield('content')
 

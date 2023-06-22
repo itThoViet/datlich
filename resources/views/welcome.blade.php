@@ -71,18 +71,10 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div class="tab-pane active" id="dienNuoc" role="tabpanel" aria-labelledby="home-tab">
-                            <div class="row mt-3 ">
-                                <div class="col-2">
-                                    <a style="text-decoration: none;" href="{{ url('a01') }}" id="cardWorkerDN"></a>
-                                </div>
-                            </div>
+                            <div class="row mt-3 " id="cardWorkerDN"></div>
                         </div>
                         <div class="tab-pane" id="dienLanh" role="tabpanel" aria-labelledby="profile-tab">
-                            <div class="row mt-3 ">
-                            <div class="col-2">
-                                <a style="text-decoration: none;" href="{{ url('b01') }}" id="cardWorkerDL"></a>
-                            </div>
-                        </div>
+                            <div class="row mt-3 " id="cardWorkerDL"></div>
                         </div>
                         <div class="tab-pane" id="doGo" role="tabpanel" aria-labelledby="messages-tab">
                             <div class="row mt-3">
@@ -421,8 +413,6 @@
 </section>
 @endsection
 @section('scripts')
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"
-integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="{{ url('assets/javascripts/showCard.js') }}"></script>
 @endsection
 

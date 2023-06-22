@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 class WorkerInfomationController extends Controller
 {
     //
-    private $uploadFolder;  
-    public function __construct()  
-    {  
-        // $this->uploadDir = public_path('');  
-        $this->uploadFolder = 'assets/images/workers/';  
-    } 
+    private $uploadFolder;
+    public function __construct()
+    {
+        // $this->uploadDir = public_path('');
+        $this->uploadFolder = 'assets/images/workers/';
+    }
     public function getAllWorker(){
         $dt = WorkerInfomation::all();
         return response()->json($dt);
@@ -22,12 +22,12 @@ class WorkerInfomationController extends Controller
         if(!$worker) {
             return view('welcome');
         }
-    
+
         // Category param exist
-    
+
         else if($worker) {
             $worker = WorkerInfomation::where('slug', $worker)->first();
-            
+
             if($worker)
             {
                 return view('workers.index', compact('worker'));
@@ -36,7 +36,7 @@ class WorkerInfomationController extends Controller
             else {
                 abort('404');
             }
-          
+
         }
             // Nothing founded! Show 404
             else {
@@ -44,7 +44,7 @@ class WorkerInfomationController extends Controller
         }
     }
     public function create(Request $request) {
-        
+
         // dd($request);
         $number_code = WorkerInfomationController::getLastestCode($request->code_worker);
         $new_w = $number_code + 1;
@@ -53,7 +53,7 @@ class WorkerInfomationController extends Controller
         $path ='';
         switch($request->code_worker)
         {
-            
+
             case 2:
                 $code_worker = 'B'.$num_padded;
                 break;
@@ -75,7 +75,7 @@ class WorkerInfomationController extends Controller
             default:
                 $code_worker = 'A'.$num_padded;
                 break;
-                 
+
         }
         if($request->hasFile('image_worker'))
         {
@@ -86,35 +86,36 @@ class WorkerInfomationController extends Controller
             // $sku = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1, 6);
             // $datel = date('H_s-m-Y');
             if ($check) {
-                $name =   $code_worker . "." . $files->getClientOriginalExtension();
+                $name = $code_worker . "." . $files->getClientOriginalExtension();
                 $path = $files->move($this->uploadFolder, $name);
+                $new_add = new WorkerInfomation([
+                    'slug'=>$code_worker,
+                    'name_worker'=>$request->name_worker,
+                    'img_worker'=>$path,
+                    'code_worker'=>$code_worker ,
+                    'kind_worker'=>$request->code_worker,
+                    'year_worker'=>$request->year_worker,
+                    'description_worker'=>$request->description_worker,
+                    'flag'=>1,
+                ]);
+                $new_add->save();
+                if($new_add)
+                {
+                    return view('welcome')-> with('status', 'Thêm mới trang thợ thành công!');
+                }
+                else{
+                    return view('welcome')-> with('error', 'Thêm mới trang thợ thành công!');
+                }
+
             }
-        }
-        $new_add = new WorkerInfomation([
-            'slug'=>$code_worker,
-            'name_worker'=>$request->name_worker,
-            'img_worker'=>$path,
-            'code_worker'=>$code_worker ,
-            'kind_worker'=>$request->code_worker,
-            'year_worker'=>$request->year_worker,
-            'description_worker'=>$request->description_worker,
-            'flag'=>1,
-        ]);
-        $new_add->save();
-        if($new_add)
-        {
-            return view('welcome')-> with('status', 'Thêm mới trang thợ thành công!');
-        }
-        else{
-            return view('welcome')-> with('error', 'Thêm mới trang thợ thành công!');
         }
 
     }
     public function getLastestCode ($id)
     {
-       
+
         $co = WorkerInfomation::where('kind_worker','=',$id)->get('id');
         return $co->count();
-       
+
     }
 }
