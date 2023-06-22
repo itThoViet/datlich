@@ -51,43 +51,42 @@ config = {
     minDate: "today"
 }
 flatpickr("input[type = datetime-local]", config);
-// const form1 = document.getElementById('orderForm');
-// form1.addEventListener('submit', async function (e) {
-//     e.preventDefault();
+const form1 = document.getElementById('orderForm');
+form1.addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-//     const data1 = {
-//         // yccvCont: document.getElementById('cvCont').value + '&nbsp' + '(' + window.location.href + ')',
-//         yccvCont: document.getElementById('cvCont').value + '&nbsp' + '(' + window.location.hostname + ')',
-//         tenCont: document.getElementById('tenCont').value,
-//         sdtCont: document.getElementById('sdtCont').value,
-//         quanCont: document.getElementById('qCont').value,
-//         diaChiCont: document.getElementById('diaChiCont').value,
-//         dateCont: document.getElementById('dateCont').value,
-//         ghiChuCont: document.getElementById('ghiChuCont').value,
-//         from_cus: 1
-//     }
+    const data1 = {
+        // yccvCont: document.getElementById('cvCont').value + '&nbsp' + '(' + window.location.href + ')',
+        yccvCont: document.getElementById('cvCont').value + '&nbsp' + '(' + window.location.href + ')',
+        tenCont: document.getElementById('tenCont').value,
+        sdtCont: document.getElementById('sdtCont').value,
+        quanCont: document.getElementById('qCont').value,
+        diaChiCont: document.getElementById('diaChiCont').value,
+        dateCont: document.getElementById('dateCont').value,
+        ghiChuCont: document.getElementById('ghiChuCont').value,
+        from_cus: 1
+    }
 
-//     try {
-//         const res = await fetch(url_order, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 // 'Access-Control-Allow-Origin': '*',
-//             },
-//             body: JSON.stringify(data1),
-//         })
+    try {
+        const res = await fetch(url_order, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // 'Access-Control-Allow-Origin': '*',
+            },
+            body: JSON.stringify(data1),
+        })
 
-//         if (res.status !== 200) {
-//             const err = new Error("Error")
-//             throw err;
-//             // demo()
-//         }
-//         window.location.reload();
+        if (res.status !== 200) {
+            const err = new Error("Error")
+            throw err;
+        }
+        window.location.reload();
 
-//     } catch (error) {
-//         console.log(error);
-//     }
-// });
+    } catch (error) {
+        console.log(error);
+    }
+});
 // function demo() {
 
 // }
