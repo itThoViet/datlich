@@ -112,7 +112,7 @@ class WorkerInfomationController extends Controller
             else{
                 return redirect()->action([QuanLyPageController::class,'index'])-> with('error', 'No Avata');
             }
-   
+
         }
         else
         {
